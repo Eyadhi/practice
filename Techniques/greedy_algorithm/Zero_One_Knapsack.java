@@ -1,0 +1,31 @@
+package greedy_algorithm;
+
+import java.util.Arrays;
+import java.util.Comparator;
+public class Zero_One_Knapsack {
+	static int getMaxValue(Item[] items,int capacity) {
+		Arrays.sort(items,Comparator.comparingInt((Item item)->item.weight).reversed());
+		int  totalValue = 0;
+        int currentWeight = 0;
+
+        for (Item item : items) {
+            if (currentWeight + item.weight <= capacity) {
+                // Take the whole item
+                currentWeight += item.weight;
+                totalValue += item.value;
+            }
+        }
+            return totalValue;
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Item[] item= {
+				new Item(10,60),
+		        new Item(20,100),
+		        new Item(30,120),
+		};
+		int maxvalue=getMaxValue(item,50);
+		System.out.println(maxvalue);
+	}
+}
