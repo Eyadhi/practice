@@ -3,7 +3,7 @@ package stack;
 import java.util.Iterator;
 import java.util.Stack;
 
-public class chair {
+public class StackImplementation {
 	// create stack using LinkedList
 	Node top;
 	int length;
@@ -17,7 +17,7 @@ public class chair {
 		}
 	}
 
-	chair() {
+	StackImplementation() {
 		this.top = null;
 		length = 0;
 	}
@@ -119,7 +119,7 @@ public class chair {
 		s1.sort(null);
 		System.out.println(s1);
 
-		chair c1 = new chair();
+		StackImplementation c1 = new StackImplementation();
 		c1.Push(10);
 		c1.Push(15);
 		c1.Push(20);
@@ -130,7 +130,5 @@ public class chair {
 		c1.Push(25);
 		c1.Push(20);
 		c1.Display();
-
 	}
-
 }
