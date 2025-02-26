@@ -98,7 +98,7 @@ public class Patterns {
 		// int n=7;
 		for (int i = 0; i < n * 2 - 1; i++) {
 			for (int j = 0; j < n; j++) {
-				if (i < n && i + j >= n - 1 || i >= n && i <= j + n - 1)
+				if (i < n && i + j >= n - 1 || i >= n && i - j <= n - 1)
 					System.out.print("*");
 				else
 					System.out.print(" ");
@@ -210,7 +210,7 @@ public class Patterns {
 		// rightdownTriangle(5);
 		// rightTriangle(5);
 		// twoTriangle(5);
-		rhombus1(4);
+		// rhombus1(4);
 		// EquilateralTriangle1(5);
 		// downEquilateralTriangle1(5);
 		// EquilateralTriangle2(5);
