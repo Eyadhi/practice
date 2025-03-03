@@ -93,23 +93,6 @@ public class numbers {
 		}
 	}
 
-	static int equilibrium(int arr[]) {
-		int n = arr.length;
-		int left_sum = 0;
-		int sum = 0;
-		for (int i = 0; i < n; i++) {
-			sum += arr[i];
-		}
-		for (int i = 0; i < n; i++) {
-			sum -= arr[i];
-			if (left_sum == sum) {
-				return i + 1;
-			}
-			left_sum += arr[i];
-		}
-		return -1;
-	}
-
 	static int PrimeNumbers1(int x, int y) {
 		int sum = 0;
 		for (int i = x; i <= y; i++) {
