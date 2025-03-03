@@ -29,7 +29,7 @@ public class BreadthFirstSearch {
         while (!q.isEmpty()) {
             sourcevertex = q.poll();
             System.out.print(sourcevertex + " ");
-            for (int v : t1[y])
+            for (int v : t1[sourcevertex])
                 if (!visited[v]) {
                     visited[v] = true;
                     q.offer(v);
