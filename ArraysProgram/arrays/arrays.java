@@ -75,6 +75,7 @@ public class arrays {
 		reversing(nums, a, nums.length - 1);
 		reversing(nums, 0, nums.length - 1);
 		return nums;
+
 	}
 
 	public static int tripletDivisible(int[] arr, int d) {
