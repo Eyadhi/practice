@@ -1,5 +1,7 @@
 package annotation;
+
 import java.util.*;
+
 /*class Parent{
 	@Deprecated
 	void showDateandtime(){
@@ -19,17 +21,18 @@ class Child extends Parent{
 	}
 }*/
 @FunctionalInterface
-//only one method is created in the interface
-interface MyInterface{
+// only one method is created in the interface
+interface MyInterface {
 	void x();
-	
+
 }
+
 public class annotation {
 	public static void main(String[] args) {
-		//Child obj=new Child();
-		//obj.showDateandtime();
+		// Child obj=new Child();
+		// obj.showDateandtime();
 		@SuppressWarnings("rawtypes")
-		ArrayList list=new ArrayList();
+		ArrayList list = new ArrayList();
 		System.out.println(list);
 	}
 

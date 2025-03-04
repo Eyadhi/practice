@@ -1,11 +1,13 @@
 package concurrency;
 
 public class counter {
-	int i=0;
-	synchronized public void increment(){
+	int i = 0;
+
+	synchronized public void increment() {
 		i++;
 	}
-	public  int getI() {
+
+	public int getI() {
 		return i++;
 	}
 

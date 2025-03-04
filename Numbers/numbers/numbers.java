@@ -93,23 +93,6 @@ public class numbers {
 		}
 	}
 
-	static int equilibrium(int arr[]) {
-		int n = arr.length;
-		int left_sum = 0;
-		int sum = 0;
-		for (int i = 0; i < n; i++) {
-			sum += arr[i];
-		}
-		for (int i = 0; i < n; i++) {
-			sum -= arr[i];
-			if (left_sum == sum) {
-				return i + 1;
-			}
-			left_sum += arr[i];
-		}
-		return -1;
-	}
-
 	static int PrimeNumbers1(int x, int y) {
 		int sum = 0;
 		for (int i = x; i <= y; i++) {
@@ -158,6 +141,11 @@ public class numbers {
 	}
 
 	static String Harshad_number(int n) {
+		// An integer number in base 10 which is divisible by the sum of its digits is
+		// said to be a Harshad Number. An n-Harshad number is an integer number
+		// divisible by the sum of its digit in base n.
+		// Below are the first few Harshad Numbers represented in base 10: 1, 2, 3, 4,
+		// 5, 6, 7, 8, 9, 10, 12, 18, 20………
 		int sum = 0;
 		int n1 = n;
 		while (n > 0) {
@@ -172,6 +160,11 @@ public class numbers {
 	}
 
 	static String Automorphic_number(int n) {
+		// An automorphic number is a number whose square ends in the same digits as the
+		// number itself. A number n is called automorphic if:
+		// n2 (mod 10d) = n where d is the number of digits in n.
+		// Examples: n = 5: then n^2 = 25
+		// Last digit of 25 is 5, so 5 is automorphic.
 		int square = n * n;
 		while (n != 0) {
 			if (n % 10 != square % 10) {
@@ -184,6 +177,12 @@ public class numbers {
 	}
 
 	static String Perfect_number(int n) {
+		// A Number that can be represented as the sum of it's factors except the number
+		// itself is known as the Perfect Number.
+		// Example
+		// Input : 6
+		// Factors of 6 except 6 are 1, 2 and 3.
+		// When we add the three we get 6 itself. Therefore, it's a Perfect Num
 		int sum = 0;
 		int n1 = n;
 		for (int i = 1; i < n; i++) {
@@ -198,6 +197,11 @@ public class numbers {
 	}
 
 	static String Strong_number(int n) {
+		// Strong Numbers are the numbers whose sum of factorial of digits is equal to
+		// the original number. Given a number, check if it is a Strong Number or not.
+		// Examples:
+		// Input : n = 145
+		// Sum of digit factorials = 1! + 4! + 5!= 1 + 24 + 120=145
 		int sum = 0;
 		int n1 = n;
 		while (n > 0) {
@@ -212,6 +216,18 @@ public class numbers {
 	}
 
 	static String Abundant_number(int n) {
+		// A number n is said to be an Abundant Number if the sum of all the proper
+		// divisors of the number denoted by sum(n) is greater than the value of the
+		// number n. And the difference between these two values is called abundance.
+		// Mathematically, if the below condition holds the number is said to be an
+		// Abundant number:
+		// sum(n)> n
+		// abundance = sum(n) - n
+		// sum(n): aliquot sum - The sum of all proper divisors of n
+		// Example:
+		// Consider the number 12.
+		// Factors of 12 = 1, 2, 3, 4, 6 Sum of factors = 1 + 2 + 3 + 4 + 6 = 16
+		// As 16 > 12 so 12 is an Abundant number.
 		int sum = 0;
 		int n1 = n;
 		while (n > 0) {
@@ -240,6 +256,12 @@ public class numbers {
 	}
 
 	static boolean SpyNumber(int n) {
+		// A number is said to be a spy number if sum of its digits is equal to the
+		// product of its digits. Taking the number 1124 as an example:
+		// Sum of digits of 1124:= 1 + 1 + 2 + 4= 8
+		// Product of digits of 1124:= 1 x 1 x 2 x 4= 8
+		// As the sum of digits and product of digits is equal for 1124, hence it is a
+		// Spy Number.
 		int sum = 0;
 		int mul = 1;
 		while (n > 0) {
@@ -284,6 +306,13 @@ public class numbers {
 	}
 
 	static void Palindrome_number(int n) {
+		// A given number can be said palindromic in nature if the reverse of the given
+		// number is the same as that of a given number. In this article, we will write
+		// a Program to check if a number is a Palindrome Number in Java.
+		// Example of Palindrome Number
+		// Input : n = 46355364
+		// Output: Reverse of n = 46355364
+		// Palindrome : Yes
 		for (int i = 1; i < n; i++) {
 			int n1 = i;
 			int sum = 0;
@@ -323,6 +352,13 @@ public class numbers {
 	}
 
 	static String Armstrong1(int n) {
+		// A positive integer of n digits is called an Armstrong number of order n
+		// (order is the number of digits) if
+		// abcd… = pow(a,n) + pow(b,n) + pow(c,n) + pow(d,n) + ….
+		// Here a, b, c and d are digits of input number abcd…..
+		// input:153
+		// Output: Yes
+		// Explanation: 153 is an Armstrong number, 1*1*1 + 5*5*5 + 3*3*3 = 153
 		int n1 = n;
 		int sum = 0;
 		int digit = 0;
@@ -343,6 +379,10 @@ public class numbers {
 	}
 
 	static int autobiographical(int n) {
+		// An autobiographical number is a number such that the first digit of it counts
+		// how many zeroes are there in it, the second digit counts how many ones are
+		// there and so on.
+		// For example, 1210 has 1 zero, 2 ones, 1 two and 0 threes.
 		String s = Integer.toString(n);
 		Set<Integer> s1 = new HashSet<>();
 		int count = 0;
