@@ -16,58 +16,6 @@ public class arrays {
 		return nums;
 	}
 
-	public static int findMinimumArraySum(int[] arr) {
-		int sum = 0;
-		int n = arr.length;
-
-		// Calculate the average of all elements
-		double average = 0;
-		for (int num : arr) {
-			average += num;
-		}
-		average /= n;
-
-		// Update elements less than average to 0
-		for (int i = 0; i < n; i++) {
-			if (arr[i] < average) {
-				arr[i] = 0;
-			}
-			sum += arr[i];
-		}
-
-		return sum;
-	}
-
-	static int reverse_polish(String[] val) {
-		Stack<String> s1 = new Stack<>();
-		int res = 0;
-		String operators = "*+-/";
-		for (String t : val) {
-			if (!operators.contains(t)) {
-				s1.push(t);
-			} else {
-				int a = Integer.valueOf(s1.pop());
-				int b = Integer.valueOf(s1.pop());
-				switch (t) {
-					case "+":
-						s1.push(String.valueOf(a + b));
-						break;
-					case "-":
-						s1.push(String.valueOf(b - a));
-						break;
-					case "*":
-						s1.push(String.valueOf(a * b));
-						break;
-					case "/":
-						s1.push(String.valueOf(b / a));
-						break;
-				}
-			}
-		}
-		res = Integer.valueOf(s1.pop());
-		return res;
-	}
-
 	static int[] rotate(int nums[], int k) {
 		k = k % nums.length;
 		int a = nums.length - k;
@@ -75,61 +23,6 @@ public class arrays {
 		reversing(nums, a, nums.length - 1);
 		reversing(nums, 0, nums.length - 1);
 		return nums;
-
-	}
-
-	public static int tripletDivisible(int[] arr, int d) {
-		int count = 0;
-		HashMap<Integer, Integer> h1 = new HashMap<>();
-		int n = arr.length;
-		for (int i = 0; i < n; i++) {
-			for (int j = i + 1; j < n; j++) {
-				int x = (d - (arr[i] + arr[j]) % d) % d;
-				count += h1.getOrDefault(x, 0);
-			}
-			h1.merge(arr[i] % d, 1, Integer::sum);
-		}
-		return count;
-	}
-
-	public static int[] Balance(int[] a) {
-		int n = a.length;
-		int[] r = new int[n];
-		int sum = 0;
-		for (int i = 0; i < n; i++) {
-			sum += a[i];
-			r[i] = Math.abs(sum - sumR(i + 1, a));
-		}
-		return r;
-	}
-
-	public static int sumR(int j, int[] a) {
-		int n = a.length;
-		int val = 0;
-		for (int i = j; i < n; i++) {
-			val += a[i];
-		}
-		if (j == n) {
-			return 0;
-		}
-		return val;
-	}
-
-	static void IsPossible(int[] arr) {
-		int sum = 0;
-		for (int i = 0; i < arr.length; i++) {
-			sum += arr[i];
-		}
-		Arrays.sort(arr);
-		reversing(arr, 0, arr.length - 1);
-		if (sum == 0) {
-			System.out.println("IMPOSSIBLE");
-		} else {
-			System.out.println("Possible");
-			for (int i = 0; i < arr.length; i++) {
-				System.out.print(arr[i] + " ");
-			}
-		}
 	}
 
 	static int secsmallest(int nums[]) {
@@ -187,10 +80,32 @@ public class arrays {
 	}
 
 	public static int thirdSmallest(int[] arr) {
+		if (arr.length < 3) {
+			return -1; // Not enough elements for a third smallest
+		}
+		// Initialize three variables to hold the first, second, and third smallest
+		// values
+		// Use Integer.MAX_VALUE to ensure any element in the array will be smaller
+		// initially
+		// This will help in finding the third smallest element
 		int first = Integer.MAX_VALUE;
 		int second = Integer.MAX_VALUE;
 		int third = Integer.MAX_VALUE;
+		// Iterate through the array to find the first, second, and third smallest
+		// elements
+		// Update the first, second, and third smallest values accordingly
 		for (int i = 0; i < arr.length; i++) {
+			// If the current element is smaller than the first smallest, update all three
+			// smallest values
+			// If the current element is smaller than the second smallest, update second and
+			// third
+			// smallest values
+			// If the current element is smaller than the third smallest, update third
+			// smallest
+			// value only if it is not equal to the second smallest
+			// This ensures that we do not count duplicates for the second and third
+			// smallest
+			// elements
 			if (arr[i] < first) {
 				third = second;
 				second = first;
@@ -205,43 +120,40 @@ public class arrays {
 		return third;
 	}
 
-	public static void swapArray(int arr[]) {
-		int i = 0;
-		while (i < arr.length - 1) {
-			int swap = arr[i];
-			arr[i] = arr[i + 1];
-			arr[i + 1] = swap;
-			i += 2;
+	public static int[] twoSum(int[] nums, int target) {
+		// Create a map to store the numbers and their indices
+		Map<Integer, Integer> map = new HashMap<>();
+
+		// Iterate through the array
+		for (int i = 0; i < nums.length; i++) {
+			// Calculate the complement
+			int complement = target - nums[i];
+
+			// Check if the complement exists in the map
+			if (map.containsKey(complement)) {
+				// If it exists, return the indices
+				return new int[] { map.get(complement), i };
+			}
+
+			// Otherwise, add the current number and its index to the map
+			map.put(nums[i], i);
 		}
+
+		// If no solution is found, return an empty array
+		return new int[0];
 	}
 
-	public static void sortDescArray(int[] arr) {
-		for (int i = 0; i < arr.length - 1; i++) {
-			for (int j = 0; j < arr.length - 1; j++) {
-				if (arr[j] < arr[j + 1]) {
-					int temp = arr[j];
-					arr[j] = arr[j + 1];
-					arr[j + 1] = temp;
-				}
+	public int[] moveZeroes(int[] nums) {
+		int lastNonZeroFoundAt = 0;
+		for (int i = 0; i < nums.length; i++) {
+			if (nums[i] != 0) {
+				nums[lastNonZeroFoundAt++] = nums[i];
 			}
 		}
-	}
-
-	static int equilibrium(int arr[]) {
-		int n = arr.length;
-		int left_sum = 0;
-		int sum = 0;
-		for (int i = 0; i < n; i++) {
-			sum += arr[i];
+		for (int i = lastNonZeroFoundAt; i < nums.length; i++) {
+			nums[i] = 0;
 		}
-		for (int i = 0; i < n; i++) {
-			sum -= arr[i];
-			if (left_sum == sum) {
-				return i + 1;
-			}
-			left_sum += arr[i];
-		}
-		return -1;
+		return nums;
 	}
 
 	public int[] nextGreater(int[] arr) {
@@ -263,29 +175,13 @@ public class arrays {
 		return result;
 	}
 
-	public static int missing_number(int nums[]) {
+	public static int missingNumber(int nums[]) {
 		int n = nums.length + 1;
 		int sum = n * (n + 1) / 2;
 		for (int i = 0; i < n - 1; i++) {
 			sum -= nums[i];
 		}
 		return sum;
-
-	}
-
-	static int gcd(int a, int b) {
-		if (b == 0) {
-			return a;
-		}
-		return gcd(b, a % b);
-	}
-
-	static int FindGcd(int nums[], int n) {
-		int result = nums[0];
-		for (int i = 1; i < n; i++) {
-			result = gcd(result, nums[i]);
-		}
-		return result;
 	}
 
 	public static int[] sortArray(int[] arr) {
@@ -329,6 +225,96 @@ public class arrays {
 		arr[j] = temp;
 	}
 
+	public static int findMinimumArraySum(int[] arr) {
+		int sum = 0;
+		int n = arr.length;
+
+		// Calculate the average of all elements
+		double average = 0;
+		for (int num : arr) {
+			average += num;
+		}
+		average /= n;
+
+		// Update elements less than average to 0
+		for (int i = 0; i < n; i++) {
+			if (arr[i] < average) {
+				arr[i] = 0;
+			}
+			sum += arr[i];
+		}
+
+		return sum;
+	}
+
+	public static int tripletDivisible(int[] arr, int d) {
+		int count = 0;
+		HashMap<Integer, Integer> h1 = new HashMap<>();
+		int n = arr.length;
+		for (int i = 0; i < n; i++) {
+			for (int j = i + 1; j < n; j++) {
+				int x = (d - (arr[i] + arr[j]) % d) % d;
+				count += h1.getOrDefault(x, 0);
+			}
+			h1.merge(arr[i] % d, 1, Integer::sum);
+		}
+		return count;
+	}
+
+	public static void swapArray(int arr[]) {
+		int i = 0;
+		while (i < arr.length - 1) {
+			int swap = arr[i];
+			arr[i] = arr[i + 1];
+			arr[i + 1] = swap;
+			i += 2;
+		}
+	}
+
+	public static void sortDescArray(int[] arr) {
+		for (int i = 0; i < arr.length - 1; i++) {
+			for (int j = 0; j < arr.length - 1; j++) {
+				if (arr[j] < arr[j + 1]) {
+					int temp = arr[j];
+					arr[j] = arr[j + 1];
+					arr[j + 1] = temp;
+				}
+			}
+		}
+	}
+
+	static int equilibrium(int arr[]) {
+		int n = arr.length;
+		int left_sum = 0;
+		int sum = 0;
+		for (int i = 0; i < n; i++) {
+			sum += arr[i];
+		}
+		for (int i = 0; i < n; i++) {
+			sum -= arr[i];
+			if (left_sum == sum) {
+				return i + 1;
+			}
+			left_sum += arr[i];
+		}
+		return -1;
+	}
+
+	static int gcd(int a, int b) {
+		if (b == 0) {
+			return a;
+		}
+		return gcd(b, a % b);
+	}
+
+	static int FindGcd(int nums[], int n) {
+		int result = nums[0];
+		for (int i = 1; i < n; i++) {
+			result = gcd(result, nums[i]);
+		}
+		return result;
+	}
+
 	public static void frequencyCount(int arr[], int N, int P) {
 		int res[] = new int[N + 1];
 		Map<Integer, Integer> h1 = new TreeMap<>();
@@ -358,105 +344,73 @@ public class arrays {
 		 * for(int i=0;i<nums.length;i++) {
 		 * System.out.print(nums[i]+" ");
 		 * }
-		 * String a="Babu";
-		 * for(int j=a.length()-1;j>=0;j--) {
-		 * System.out.print(a.charAt(j));
-		 * }
+		 * 
+		 * System.out.println("second largest: "+seclargest(nums));
+		 * System.out.println("second smallest: "+secsmallest(nums));
+		 * System.out.println(thirdLargest(nums));
+		 * System.out.println(thirdSmallest(nums));
+		 * 
 		 * int nums[]= {1,2,3,4,5,6,7};
 		 * int result[]=rotate(nums,3);
 		 * for(int i=0;i<nums.length;i++) {
 		 * System.out.print(result[i]+" ");
 		 * }
-		 * int a=1600;
-		 * if((a%4==0 && a%100!=0)|| a%400==0) {
-		 * System.out.println("Leap year");
-		 * }
-		 * else {
-		 * System.out.println("Not Leap year");
-		 * }
-		 * int arr[]= {1,4,2,9,5};
+		 * 
+		 * arr[]= {1,4,2,9,5};
 		 * System.out.println( findMinimumArraySum(arr));
-		 * int arr1[]= {2,3,1,5,4};
-		 * int N=arr1.length;
-		 * int k=3;
-		 * System.out.println(findMaxScore(N,k,arr1));
-		 * String S = "60004";
-		 * int minimumKeyPresses = findMinimumKeyPresses(S);
-		 * System.out.println("Minimum number of key presses: " + minimumKeyPresses);
-		 * int[] a={1,2,3,4,5};
-		 * int[] res=Balance(a);
-		 * System.out.println(Arrays.toString(res));
-		 * String inputString = "aabbcc";
-		 * int result = minStepsToMagicString(inputString);
-		 * System.out.println("Minimum number of steps required: " + result);
-		 * int initialMarbles = 10; // Initial number of marbles
-		 * int[] operations = { 2, 5 }; // Operations: A and B
-		 * int uniqueValues = findUniqueValues(initialMarbles, operations);
-		 * System.out.println("Total number of unique values: " + uniqueValues);
-		 * System.out.println(UniqueMarbles(10,2,5));
-		 * int [] a= {2,9,3,4,5};
-		 * System.out.println(ponds(a));
-		 * System.out.println(BirthDay(2,3));
-		 * //System.out.println( pyramidSum(4));
-		 * int[] roll = {4,2,1,5,8,9};
-		 * int k = 6;
+		 * 
 		 * int arr[]= {14,2,5,1,3,4,1};
 		 * System.out.println(equilibrium(arr));
-		 * int result = findDebatePair(roll, k);
-		 * if (result != -1) {
-		 * System.out.println("Lowest roll number of the pair with sum divisible by k: "
-		 * + result);
-		 * }
-		 * System.out.println(Security(122245));
-		 * String str4="xxxyyz";
-		 * System.out.println(UniqueString(str4));
+		 * 
 		 * String[] val= {"4","13","5","/","+"};
 		 * System.out.println(reverse_polish(val));
+		 * 
 		 * /*int arr[]= {4,7,3,4,8,1};
-		 * next_greater n1=new next_greater();
 		 * int[] arr1=n1.nextGreater(arr);
 		 * for(int i=0;i<arr.length;i++) {
 		 * System.out.print(arr1[i]+" ");
 		 * }
 		 * System.out.println();
+		 * 
 		 * int arr2[]= {1,0,2,0,2,1,0,1,2,1,0};
 		 * int res[]=sortArray(arr2);
 		 * for(int i=0;i<arr2.length;i++) {
 		 * System.out.print(res[i]+" ");
 		 * }
 		 * System.out.println();
+		 * 
 		 * int arr3[]= {-4,-1,0,2,4,10};
 		 * int res1[]=sortSquarred(arr3);
 		 * for(int i=0;i<arr3.length;i++) {
 		 * System.out.print(res1[i]+" ");
 		 * }
 		 * System.out.println();
+		 * 
 		 * int nums[]= {1,2,4,5,6};
-		 * System.out.println(missing_number(nums));
+		 * System.out.println(missingNumber(nums));
+		 * 
 		 * int nums1[]= {2,4,6,8,10};
 		 * int res2=FindGcd(nums1,nums1.length);
 		 * System.out.print(res2);
-		 * System.out.println(secsmallest(nums2));
-		 */
-		// ArrayList<Integer>l1=new ArrayList<>();
-		// l1.add(0);
-		// l1.add(2);
-		// l1.add(1);
-		// l1.add(2);
-		// l1.add(0);
-		// sort012(l1);
-		// System.out.println(l1);
-		int[] arr1 = { 3, 6, 4, 7, 8, 9 };
-		/*
+		 * 
+		 * int arr1[]= {1,2,3,4,5,6};
 		 * int d=5;
 		 * System.out.println(tripletDivisible(arr1,d));
-		 * System.out.println(thirdLargest(arr1));
-		 * System.out.println(thirdSmallest(arr1));
 		 */
-		// IsPossible(arr1);
+
+		int[] arr1 = { 3, 6, 4, 7, 8, 9 };
 		swapArray(arr1);
 		for (int i = 0; i < arr1.length; i++) {
 			System.out.print(arr1[i] + " ");
+		}
+
+		int[] nums = { 2, 7, 11, 15 };
+		int target = 9;
+		int[] result = twoSum(nums, target);
+		if (result.length == 2) {
+			System.out.println("Indices: " + result[0] + ", " + result[1]);
+		} else {
+			System.out.println("No two sum solution found.");
 		}
 	}
 }
