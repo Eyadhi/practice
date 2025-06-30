@@ -83,29 +83,10 @@ public class arrays {
 		if (arr.length < 3) {
 			return -1; // Not enough elements for a third smallest
 		}
-		// Initialize three variables to hold the first, second, and third smallest
-		// values
-		// Use Integer.MAX_VALUE to ensure any element in the array will be smaller
-		// initially
-		// This will help in finding the third smallest element
 		int first = Integer.MAX_VALUE;
 		int second = Integer.MAX_VALUE;
 		int third = Integer.MAX_VALUE;
-		// Iterate through the array to find the first, second, and third smallest
-		// elements
-		// Update the first, second, and third smallest values accordingly
 		for (int i = 0; i < arr.length; i++) {
-			// If the current element is smaller than the first smallest, update all three
-			// smallest values
-			// If the current element is smaller than the second smallest, update second and
-			// third
-			// smallest values
-			// If the current element is smaller than the third smallest, update third
-			// smallest
-			// value only if it is not equal to the second smallest
-			// This ensures that we do not count duplicates for the second and third
-			// smallest
-			// elements
 			if (arr[i] < first) {
 				third = second;
 				second = first;
@@ -184,7 +165,7 @@ public class arrays {
 		return sum;
 	}
 
-	public static int[] sortArray(int[] arr) {
+	public static int[] sort012(int[] arr) {
 		int i = 0;
 		int j = 0;
 		int k = arr.length - 1;
