@@ -520,6 +520,18 @@ public class numbers {
 		return str1.toString();
 	}
 
+	public static String func(int index, String s1, String s2) {
+		String str = s1 + s2;
+		String res = "";
+		for (int i = index; i < str.length(); i++) {
+			res += str.charAt(i);
+		}
+		for (int i = 0; i < index; i++) {
+			res += str.charAt(i);
+		}
+		return res;
+	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		/*
@@ -564,7 +576,15 @@ public class numbers {
 		 * String res=convertString(str);
 		 * System.out.println(res);
 		 */
-		System.out.println(Armstrong1(8209));
-		System.out.println(sumOfPrime(43));
+		// System.out.println(Armstrong1(8209));
+		// System.out.println(sumOfPrime(43));
+		Scanner sc = new Scanner(System.in);
+		System.out.println("enter s1");
+		String s1 = sc.next();
+		System.out.println("enter s2");
+		String s2 = sc.next();
+		System.out.println("enter index");
+		int index = sc.nextInt();
+		System.out.println(func(index, s1, s2));
 	}
 }
