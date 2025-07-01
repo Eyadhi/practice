@@ -242,6 +242,77 @@ public class arrays {
 		return count;
 	}
 
+	public List<List<Integer>> threeSum(int[] nums) {
+		List<List<Integer>> l1 = new ArrayList<>();
+		int n = nums.length;
+		if (nums == null || n < 3)
+			return l1;
+		Arrays.sort(nums);
+		for (int i = 0; i < n - 2; i++) {
+			if (i > 0 && nums[i] == nums[i - 1])
+				continue;
+			int j = i + 1;
+			int k = n - 1;
+			while (j < k) {
+				int sum = nums[i] + nums[j] + nums[k];
+				if (sum == 0) {
+					l1.add(List.of(nums[i], nums[j], nums[k]));
+					while (j < k && nums[j] == nums[j + 1])
+						j++;
+					while (j < k && nums[k] == nums[k - 1])
+						k--;
+					j++;
+					k--;
+				} else if (sum < 0) {
+					j++;
+				} else {
+					k--;
+				}
+			}
+		}
+		return l1;
+	}
+
+	public static int maximumSubarraySum(int[] arr) {
+		int sum = 0;
+		int maxSum = nums[0];
+
+		for (int num : nums) {
+			sum += num;
+			maxSum = sum > maxSum ? sum : maxSum;
+			if (sum < 0) {
+				sum = 0;
+			}
+		}
+		return maxSum;
+	}
+
+	public static int[] maximumSubarray(int[] arr) {
+		int left = 0;
+		int right = 0;
+		int maxsum = Integer.MIN_VALUE;
+		int currentSum = 0;
+		for (int i = 0; i < arr.length; i++) {
+			currentSum += arr[i];
+			if (currentSum > maxsum) {
+				maxsum = currentSum;
+				right = i;
+			}
+			if (currentSum < 0) {
+				currentSum = 0;
+				left = i + 1;
+			}
+		}
+		if (maxsum == Integer.MIN_VALUE) {
+			return new int[0]; // No positive sum found
+		}
+
+		if (left > right) {
+			return new int[0]; // No valid subarray found
+		}
+		return Arrays.copyOfRange(arr, left, right + 1);
+	}
+
 	public static void swapArray(int arr[]) {
 		int i = 0;
 		while (i < arr.length - 1) {
