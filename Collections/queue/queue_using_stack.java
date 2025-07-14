@@ -27,7 +27,6 @@ public class queue_using_stack {
 	}
 
 	public static void main(String[] args) {
-		queue_using_stack q = new queue_using_stack();
 		enQueue(1);
 		enQueue(2);
 		enQueue(3);

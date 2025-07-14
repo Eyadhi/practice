@@ -306,7 +306,7 @@ public class arrays {
 		return l1;
 	}
 
-	public static int maximumSubarraySum(int[] arr) {
+	public static int maximumSubarraySum(int[] nums) {
 		int sum = 0;
 		int maxSum = nums[0];
 
