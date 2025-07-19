@@ -75,20 +75,18 @@ class Graph1 {
 public class AdjacentListRep {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		int V = 6;
-		/*
-		 * List<List<Integer>>adj=new ArrayList<>(V);
-		 * for(int i=0;i<V;i++) {
-		 * adj.add(new ArrayList<>());
-		 * }
-		 * addEdge(adj,0,1);
-		 * addEdge(adj,0,2);
-		 * addEdge(adj,1,2);
-		 * addEdge(adj,2,3);
-		 * System.out.println("Adjacent List Representation");
-		 * display(adj);
-		 */
+		List<List<Integer>> adj = new ArrayList<>(V);
+		for (int i = 0; i < V; i++) {
+			adj.add(new ArrayList<>());
+		}
+		addEdge(adj, 0, 1);
+		addEdge(adj, 0, 2);
+		addEdge(adj, 1, 2);
+		addEdge(adj, 2, 3);
+		System.out.println("Adjacent List Representation");
+		display(adj);
+
 		Graph1 obj = new Graph1(V);
 		obj.addEdge(0, 1);
 		obj.addEdge(0, 3);
@@ -106,7 +104,6 @@ public class AdjacentListRep {
 	}
 
 	private static void display(List<List<Integer>> adj) {
-		// TODO Auto-generated method stub
 		for (int i = 0; i < adj.size(); i++) {
 			System.out.print(i + ":");
 			for (int j : adj.get(i)) {
@@ -118,7 +115,6 @@ public class AdjacentListRep {
 	}
 
 	private static void addEdge(List<List<Integer>> adj, int i, int j) {
-		// TODO Auto-generated method stub
 		adj.get(i).add(j);
 		adj.get(j).add(i);
 
