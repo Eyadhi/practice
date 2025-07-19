@@ -30,5 +30,6 @@ public class Balanced {
     for (String pair : list) {
       System.out.println(pair);
     }
+    sc.close();
   }
 }

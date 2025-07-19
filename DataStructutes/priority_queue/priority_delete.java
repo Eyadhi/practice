@@ -2,50 +2,50 @@ package priority_queue;
 
 import java.util.*;
 
-class elem {
-	static int x, y;
+class Elem {
+	private int x, y;
 
-	public elem(int x, int y) {
-		super();
+	public Elem(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
 
-	public static int getX() {
+	public int getX() {
 		return x;
 	}
 
-	public static void setX(int x) {
-		elem.x = x;
+	public void setX(int x) {
+		this.x = x;
 	}
 
-	public static int getY() {
+	public int getY() {
 		return y;
 	}
 
-	public static void setY(int y) {
-		elem.y = y;
+	public void setY(int y) {
+		this.y = y;
 	}
 }
 
-class priority_delete {
-	public static List<elem> Schedule(List<elem> elems) {
-		Collections.sort(elems, Comparator.comparingInt(elem -> priority_queue.elem.getY()));
-		Collections.reverse(elems);
+class PriorityDelete {
+	public static List<Elem> schedule(List<Elem> elems) {
+		// Sort in descending order of y (priority)
+		elems.sort(Comparator.comparingInt(Elem::getY).reversed());
 		return elems;
 	}
 
 	public static void main(String[] args) {
-		List<elem> elems = new ArrayList<>();
-		elems.add(new elem(2, 4));
-		elems.add(new elem(5, 3));
-		elems.add(new elem(6, 1));
-		elems.add(new elem(7, 4));
-		elems.add(new elem(9, 4));
-		List<elem> Scheduled = Schedule(elems);
-		System.out.println("Schedule");
-		for (elem el : Scheduled) {
-			System.out.println("x is" + el.x + " y is" + el.getY());
+		List<Elem> elems = new ArrayList<>();
+		elems.add(new Elem(2, 4));
+		elems.add(new Elem(5, 3));
+		elems.add(new Elem(6, 1));
+		elems.add(new Elem(7, 4));
+		elems.add(new Elem(9, 4));
+
+		List<Elem> scheduled = schedule(elems);
+		System.out.println("Schedule:");
+		for (Elem el : scheduled) {
+			System.out.println("x is " + el.getX() + ", y is " + el.getY());
 		}
 	}
 }

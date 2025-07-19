@@ -1,57 +1,72 @@
 package graphs;
 
 import java.util.ArrayList;
-import java.util.Queue;
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 
 public class BreadthFirstSearch {
     int v;
-    ArrayList<Integer> t1[];
+    List<List<Integer>> adjList;
 
-    BreadthFirstSearch(int noofvertex) {
-        v = noofvertex;
-        t1 = new ArrayList[v];
-        for (int i = 0; i < noofvertex; i++) {
-            t1[i] = new ArrayList<>();
+    // Constructor
+    BreadthFirstSearch(int noOfVertices) {
+        v = noOfVertices;
+        adjList = new ArrayList<>();
+        for (int i = 0; i < v; i++) {
+            adjList.add(new ArrayList<>());
         }
     }
 
-    void edge(int x, int y) {
-        t1[x].add(y);
+    // Add an edge to the graph
+    void addEdge(int src, int dest) {
+        adjList.get(src).add(dest);
     }
 
-    void breadthFirstSearch(int sourcevertex) {
+    // Perform BFS traversal from the source vertex
+    void breadthFirstSearch(int sourceVertex) {
         boolean[] visited = new boolean[v];
-        Queue<Integer> q = new LinkedList<>();
-        visited[sourcevertex] = true;
-        q.add(sourcevertex);
-        while (!q.isEmpty()) {
-            sourcevertex = q.poll();
-            System.out.print(sourcevertex + " ");
-            for (int v : t1[sourcevertex])
-                if (!visited[v]) {
-                    visited[v] = true;
-                    q.offer(v);
+        Queue<Integer> queue = new LinkedList<>();
+
+        visited[sourceVertex] = true;
+        queue.offer(sourceVertex);
+
+        System.out.print("BFS Traversal starting from vertex " + sourceVertex + ": ");
+
+        while (!queue.isEmpty()) {
+            int current = queue.poll();
+            System.out.print(current + " ");
+
+            for (int neighbor : adjList.get(current)) {
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    queue.offer(neighbor);
                 }
+            }
         }
     }
 
+    // Main method to test the BFS
     public static void main(String[] args) {
-        BreadthFirstSearch g1 = new BreadthFirstSearch(6);
-        g1.edge(0, 1);
-        g1.edge(0, 2);
-        g1.edge(0, 5);
-        g1.edge(1, 0);
-        g1.edge(1, 2);
-        g1.edge(2, 0);
-        g1.edge(2, 1);
-        g1.edge(2, 3);
-        g1.edge(2, 4);
-        g1.edge(3, 2);
-        g1.edge(4, 2);
-        g1.edge(4, 5);
-        g1.edge(5, 0);
-        g1.edge(5, 4);
-        g1.breadthFirstSearch(0);
+        BreadthFirstSearch graph = new BreadthFirstSearch(6);
+
+        // Undirected graph - add edges both ways
+        graph.addEdge(0, 1);
+        graph.addEdge(0, 2);
+        graph.addEdge(0, 5);
+        graph.addEdge(1, 0);
+        graph.addEdge(1, 2);
+        graph.addEdge(2, 0);
+        graph.addEdge(2, 1);
+        graph.addEdge(2, 3);
+        graph.addEdge(2, 4);
+        graph.addEdge(3, 2);
+        graph.addEdge(4, 2);
+        graph.addEdge(4, 5);
+        graph.addEdge(5, 0);
+        graph.addEdge(5, 4);
+
+        // Start BFS from vertex 0
+        graph.breadthFirstSearch(0);
     }
 }

@@ -13,7 +13,7 @@ public class Llist {
 		l1.add(2, 5);
 		// l1.remove(2);
 		// l1.removeFirst();
-		Iterator it = l1.iterator();
+		Iterator<Integer> it = l1.iterator();
 		while (it.hasNext()) {
 			System.out.print(it.next() + " ");
 		}
@@ -26,7 +26,7 @@ public class Llist {
 		s1.push("hello");
 		s1.push("world");
 		l2.addAll(s1);
-		Iterator it1 = l2.iterator();
+		Iterator<String> it1 = l2.iterator();
 		while (it1.hasNext()) {
 			System.out.print(it1.next() + " ");
 		}

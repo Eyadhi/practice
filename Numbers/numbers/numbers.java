@@ -585,5 +585,6 @@ public class numbers {
 		System.out.println("enter index");
 		int index = sc.nextInt();
 		System.out.println(func(index, s1, s2));
+		sc.close();
 	}
 }

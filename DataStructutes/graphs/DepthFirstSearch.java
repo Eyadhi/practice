@@ -1,53 +1,61 @@
 package graphs;
 
 import java.util.LinkedList;
-import java.util.ListIterator;
 
 public class DepthFirstSearch {
    int V;
    LinkedList<Integer>[] adj;
 
-   DepthFirstSearch(int nov) {
-      V = nov;
-      adj = new LinkedList[nov];
-      for (int i = 0; i < nov; i++) {
+   @SuppressWarnings("unchecked")
+   DepthFirstSearch(int numVertices) {
+      V = numVertices;
+      adj = new LinkedList[V];
+      for (int i = 0; i < V; i++) {
          adj[i] = new LinkedList<>();
       }
    }
 
-   void edge(int nov, int y) {
-      adj[nov].add(y);
+   // Add edge from vertex x to y
+   void addEdge(int x, int y) {
+      adj[x].add(y);
    }
 
-   void depthfirstsearch(int v) {
+   // DFS starting from a given vertex
+   void depthFirstSearch(int start) {
       boolean[] visited = new boolean[V];
-      DFS(v, visited);
+      System.out.print("DFS starting from vertex " + start + ": ");
+      dfsUtil(start, visited);
    }
 
-   void DFS(int v, boolean visited[]) {
+   // Utility method for DFS
+   void dfsUtil(int v, boolean[] visited) {
       visited[v] = true;
       System.out.print(v + " ");
-      ListIterator<Integer> it = adj[v].listIterator();
-      while (it.hasNext()) {
-         int n = it.next();
-         if (!visited[n])
-            DFS(n, visited);
-      }
 
+      for (int neighbor : adj[v]) {
+         if (!visited[neighbor]) {
+            dfsUtil(neighbor, visited);
+         }
+      }
    }
 
    public static void main(String[] args) {
-      DepthFirstSearch d1 = new DepthFirstSearch(4);
-      d1.edge(0, 1);
-      d1.edge(0, 2);
-      d1.edge(0, 5);
-      d1.edge(1, 0);
-      d1.edge(1, 2);
-      d1.edge(2, 0);
-      d1.edge(2, 1);
-      d1.edge(2, 3);
-      d1.edge(3, 3);
-      d1.depthfirstsearch(2);
-   }
+      DepthFirstSearch graph = new DepthFirstSearch(6);
 
+      // Adding edges
+      graph.addEdge(0, 1);
+      graph.addEdge(0, 2);
+      graph.addEdge(0, 5);
+      graph.addEdge(1, 0);
+      graph.addEdge(1, 2);
+      graph.addEdge(2, 0);
+      graph.addEdge(2, 1);
+      graph.addEdge(2, 3);
+      graph.addEdge(3, 3);
+      graph.addEdge(4, 5); // Optional - not connected to others
+      graph.addEdge(5, 4);
+
+      // Start DFS from vertex 2
+      graph.depthFirstSearch(2);
+   }
 }
