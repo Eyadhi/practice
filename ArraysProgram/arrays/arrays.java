@@ -325,24 +325,27 @@ public class arrays {
 		int right = 0;
 		int maxsum = Integer.MIN_VALUE;
 		int currentSum = 0;
+		int start = 0; // potential start of subarray
+
 		for (int i = 0; i < arr.length; i++) {
 			currentSum += arr[i];
+
 			if (currentSum > maxsum) {
 				maxsum = currentSum;
+				left = start;
 				right = i;
 			}
+
 			if (currentSum < 0) {
 				currentSum = 0;
-				left = i + 1;
+				start = i + 1; // mark new start
 			}
 		}
-		if (maxsum == Integer.MIN_VALUE) {
-			return new int[0]; // No positive sum found
+
+		if (maxsum == Integer.MIN_VALUE || left > right) {
+			return new int[0]; // no valid subarray
 		}
 
-		if (left > right) {
-			return new int[0]; // No valid subarray found
-		}
 		return Arrays.copyOfRange(arr, left, right + 1);
 	}
 

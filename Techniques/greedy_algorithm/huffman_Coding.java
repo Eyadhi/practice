@@ -1,4 +1,5 @@
 package greedy_algorithm;
+
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
@@ -37,7 +38,8 @@ class huffman_Coding {
             HuffmanNode left = priorityQueue.poll();
             HuffmanNode right = priorityQueue.poll();
 
-            // Create a new internal node with the combined frequency and add it to the priority queue
+            // Create a new internal node with the combined frequency and add it to the
+            // priority queue
             int combinedFrequency = left.frequency + right.frequency;
             HuffmanNode newNode = new HuffmanNode('\0', combinedFrequency);
             newNode.left = left;
