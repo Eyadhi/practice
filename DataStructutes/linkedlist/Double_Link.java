@@ -137,7 +137,6 @@ public class Double_Link {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Double_Link obj = new Double_Link();
 		obj.insertBeg(26);
 		obj.insertBeg(25);

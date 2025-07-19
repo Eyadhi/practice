@@ -9,7 +9,6 @@ import java.io.ObjectOutputStream;
 public class SerDeserDemo {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Student s1 = new Student("John", 25, "23 East,Clifornia");
 		String filename = "D:\\java\\Text.txt";
 		FileOutputStream fileOut = null;

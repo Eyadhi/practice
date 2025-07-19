@@ -423,7 +423,6 @@ public class arrays {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		/*
 		 * int nums[]= {1,4,3,2,5};
 		 * Arrays.sort(nums);

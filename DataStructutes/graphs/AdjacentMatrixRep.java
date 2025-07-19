@@ -16,7 +16,6 @@ class Graph {
 	}
 
 	public void display() {
-		// TODO Auto-generated method stub
 		System.out.println("Adjacent Matrix Representation");
 		for (int[] row : g) {
 			for (int val : row) {
@@ -27,7 +26,6 @@ class Graph {
 	}
 
 	public void addEdge(int x, int y) {
-		// TODO Auto-generated method stub
 		if ((x >= n) || (y > n)) {
 			System.out.println("Vertex does not exists");
 		}
@@ -69,7 +67,6 @@ class Graph {
 
 public class AdjacentMatrixRep {
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Graph obj = new Graph(4);
 		obj.addEdge(0, 1);
 		obj.addEdge(0, 2);

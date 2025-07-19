@@ -533,7 +533,6 @@ public class numbers {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		/*
 		 * System.out.println(even_or_odd(23));
 		 * System.out.println(autobiographical(2020));

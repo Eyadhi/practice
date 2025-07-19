@@ -1,7 +1,6 @@
 package graphs;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.Queue;
 import java.util.LinkedList;
 
@@ -38,7 +37,6 @@ public class BreadthFirstSearch {
     }
 
     public static void main(String[] args) {
-        // TODO Auto-generated method stub
         BreadthFirstSearch g1 = new BreadthFirstSearch(6);
         g1.edge(0, 1);
         g1.edge(0, 2);

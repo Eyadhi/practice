@@ -36,7 +36,6 @@ class priority_delete {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		List<elem> elems = new ArrayList<>();
 		elems.add(new elem(2, 4));
 		elems.add(new elem(5, 3));

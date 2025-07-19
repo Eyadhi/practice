@@ -6,7 +6,6 @@ import java.util.Stack;
 
 public class Llist {
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		LinkedList<Integer> l1 = new LinkedList<>();
 		l1.add(3);
 		l1.add(4);

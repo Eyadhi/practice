@@ -53,7 +53,6 @@ public class MyClass {
 	}
 
 	public static void main(String[] args) throws Exception {
-		// TODO Auto-generated method stub
 		Demo1 d = new Demo1();
 		Fullstack1 a = d.getClass().getAnnotation(Fullstack1.class);
 		System.out.println(a);

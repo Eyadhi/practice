@@ -28,7 +28,6 @@ public class quicking {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		int a1[] = { 3, 4, 2, 5, 7, 3 };
 		QuickSort(a1, 0, a1.length - 1);
 		for (int i = 0; i < a1.length; i++) {

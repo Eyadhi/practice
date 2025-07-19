@@ -2,7 +2,6 @@ package graphs;
 
 import java.util.LinkedList;
 import java.util.ListIterator;
-import java.util.Stack;
 
 public class DepthFirstSearch {
    int V;
@@ -38,24 +37,16 @@ public class DepthFirstSearch {
    }
 
    public static void main(String[] args) {
-      // TODO Auto-generated method stub
       DepthFirstSearch d1 = new DepthFirstSearch(4);
       d1.edge(0, 1);
       d1.edge(0, 2);
-      // d1.edge(0, 5);
-      // d1.edge(1, 0);
+      d1.edge(0, 5);
+      d1.edge(1, 0);
       d1.edge(1, 2);
       d1.edge(2, 0);
-      // d1.edge(2, 1);
+      d1.edge(2, 1);
       d1.edge(2, 3);
       d1.edge(3, 3);
-      /*
-       * d1.edge(2, 4);
-       * d1.edge(3, 2);
-       * d1.edge(4, 2);
-       * d1.edge(5, 2);
-       * d1.edge(5, 0);
-       */
       d1.depthfirstsearch(2);
    }
 
