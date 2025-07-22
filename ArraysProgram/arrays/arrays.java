@@ -346,6 +346,28 @@ public class arrays {
 		return Arrays.copyOfRange(arr, left, right + 1);
 	}
 
+	public static int longestConsecutiveSequence(int[] arr) {
+		int res = 0;
+		Set<Integer> s1 = new HashSet<>();
+		for (int num : arr)
+			s1.add(num);
+
+		for (int num : arr) {
+			if (!s1.contains(num - 1)) {
+				int curr = num;
+				int currstreak = 1;
+
+				while (s1.contains(curr + 1)) {
+					curr++;
+					currstreak++;
+				}
+				res = Math.max(currstreak, res);
+			}
+		}
+
+		return res;
+	}
+
 	public static void swapArray(int arr[]) {
 		int i = 0;
 		while (i < arr.length - 1) {
@@ -483,19 +505,22 @@ public class arrays {
 		 * System.out.println(tripletDivisible(arr1,d));
 		 */
 
-		int[] arr1 = { 3, 6, 4, 7, 8, 9 };
-		swapArray(arr1);
-		for (int i = 0; i < arr1.length; i++) {
-			System.out.print(arr1[i] + " ");
-		}
+		// int[] arr1 = { 3, 6, 4, 7, 8, 9 };
+		// swapArray(arr1);
+		// for (int i = 0; i < arr1.length; i++) {
+		// System.out.print(arr1[i] + " ");
+		// }
 
-		int[] nums = { 2, 7, 11, 15 };
-		int target = 9;
-		int[] result = twoSum(nums, target);
-		if (result.length == 2) {
-			System.out.println("Indices: " + result[0] + ", " + result[1]);
-		} else {
-			System.out.println("No two sum solution found.");
-		}
+		// int[] nums = { 2, 7, 11, 15 };
+		// int target = 9;
+		// int[] result = twoSum(nums, target);
+		// if (result.length == 2) {
+		// System.out.println("Indices: " + result[0] + ", " + result[1]);
+		// } else {
+		// System.out.println("No two sum solution found.");
+		// }
+
+		int[] lon = { 100, 4, 200, 1, 2 };
+		System.out.println(consectutiveSequence(lon));
 	}
 }
