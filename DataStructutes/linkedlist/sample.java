@@ -1,7 +1,5 @@
 package linkedlist;
 
-import java.lang.*;
-
 public class sample {
 	Node head;
 
@@ -43,7 +41,6 @@ public class sample {
 
 class Linklist {
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		sample l1 = new sample();
 		l1.insert(5);
 		l1.insert(3);

@@ -334,9 +334,6 @@ public class single_link {
 		headRef = sortedMerge(a, b);
 	}
 
-	// Split the nodes of the given list into front and back halves and return the
-	// two lists using the reference parameters
-	// If the length is odd, the extra node should go in the front list
 	static void frontBackSplit(Node source, Node[] frontRef, Node[] backRef) {
 		Node slow = source;
 		Node fast = source.next;
@@ -550,7 +547,6 @@ public class single_link {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		single_link obj = new single_link();
 		obj.insertBeg(15);
 		obj.insertBeg(20);

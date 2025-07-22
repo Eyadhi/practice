@@ -533,7 +533,6 @@ public class numbers {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		/*
 		 * System.out.println(even_or_odd(23));
 		 * System.out.println(autobiographical(2020));
@@ -586,5 +585,6 @@ public class numbers {
 		System.out.println("enter index");
 		int index = sc.nextInt();
 		System.out.println(func(index, s1, s2));
+		sc.close();
 	}
 }

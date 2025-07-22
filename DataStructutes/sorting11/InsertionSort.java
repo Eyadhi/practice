@@ -17,7 +17,6 @@ public class InsertionSort {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		int a1[] = new int[] { 3, 4, 2, 5, 7, 3 };
 		insertion(a1);
 	}

@@ -50,7 +50,6 @@ public class Binary_heap {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Binary_heap pq = new Binary_heap(3);
 		pq.insert(4);
 		pq.insert(5);

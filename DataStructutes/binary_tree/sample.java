@@ -207,7 +207,6 @@ class Treetraversal {
 
 public class sample {
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Treetraversal t1 = new Treetraversal();
 		t1.root = new Node(1);
 		t1.root.left = new Node(5);
