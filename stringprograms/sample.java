@@ -99,48 +99,40 @@ public class sample {
         return prefix;
     }
 
-    public static String longestPalindromeString(String str) {
-        StringBuilder t = new StringBuilder('^');
-        for (char c : str.toCharArray()) {
-            t.append("#").append(c);
+    public static String longestPalindromeString(String s) {
+        if (s.length() <= 1) {
+            return s;
         }
-        t.append("#$");
 
-        int n = t.length();
-        int[] p = new int[n];
-        int center = 0, right = 0;
+        int maxLen = 1;
+        String maxStr = s.substring(0, 1);
+        s = "#" + s.replaceAll("", "#") + "#";
+        int[] dp = new int[s.length()];
+        int center = 0;
+        int right = 0;
 
-        for (int i = 1; i < n - 1; i++) {
-            int mirror = 2 * center - i;
-
+        for (int i = 0; i < s.length(); i++) {
             if (i < right) {
-                p[i] = Math.min(right - i, p[mirror]);
+                dp[i] = Math.min(right - i, dp[2 * center - i]);
             }
 
-            // Expand around center
-            while (t.charAt(i + (p[i] + 1)) == t.charAt(i - (p[i] + 1))) {
-                p[i]++;
+            while (i - dp[i] - 1 >= 0 && i + dp[i] + 1 < s.length()
+                    && s.charAt(i - dp[i] - 1) == s.charAt(i + dp[i] + 1)) {
+                dp[i]++;
             }
 
-            // Update center and right
-            if (i + p[i] > right) {
+            if (i + dp[i] > right) {
                 center = i;
-                right = i + p[i];
+                right = i + dp[i];
+            }
+
+            if (dp[i] > maxLen) {
+                maxLen = dp[i];
+                maxStr = s.substring(i - dp[i], i + dp[i] + 1).replaceAll("#", "");
             }
         }
 
-        // Find the maximum length
-        int maxLen = 0, centerIndex = 0;
-        for (int i = 1; i < n - 1; i++) {
-            if (p[i] > maxLen) {
-                maxLen = p[i];
-                centerIndex = i;
-            }
-        }
-
-        // Extract original substring
-        int start = (centerIndex - maxLen) / 2;
-        return str.substring(start, start + maxLen);
+        return maxStr;
     }
 
     public static void main(String[] args) {
@@ -153,5 +145,8 @@ public class sample {
         String[] input = { "eat", "tea", "tan", "ate", "nat", "bat" };
         List<List<String>> result = groupAnagram(input);
         System.out.println(result);
+
+        String input1 = "abacdfgdcaba";
+        System.out.println("Longest Palindromic Substring: " + longestPalindromeString(input1));
     }
 }
