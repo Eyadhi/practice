@@ -523,6 +523,6 @@ public class arrays {
 		// }
 
 		int[] lon = { 100, 4, 200, 1, 2 };
-		System.out.println(consectutiveSequence(lon));
+		System.out.println(longestConsecutiveSequence(lon));
 	}
 }
