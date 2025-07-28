@@ -98,6 +98,50 @@ public class sample {
         return prefix;
     }
 
+    public static String longestPalindromeString(String str) {
+        StringBuilder t = new StringBuilder('^');
+        for (char c : str.toCharArray()) {
+            t.append("#").append(c);
+        }
+        t.append("#$");
+
+        int n = t.length();
+        int[] p = new int[n];
+        int center = 0, right = 0;
+
+        for (int i = 1; i < n - 1; i++) {
+            int mirror = 2 * center - i;
+
+            if (i < right) {
+                p[i] = Math.min(right - i, p[mirror]);
+            }
+
+            // Expand around center
+            while (t.charAt(i + (p[i] + 1)) == t.charAt(i - (p[i] + 1))) {
+                p[i]++;
+            }
+
+            // Update center and right
+            if (i + p[i] > right) {
+                center = i;
+                right = i + p[i];
+            }
+        }
+
+        // Find the maximum length
+        int maxLen = 0, centerIndex = 0;
+        for (int i = 1; i < n - 1; i++) {
+            if (p[i] > maxLen) {
+                maxLen = p[i];
+                centerIndex = i;
+            }
+        }
+
+        // Extract original substring
+        int start = (centerIndex - maxLen) / 2;
+        return str.substring(start, start + maxLen);
+    }
+
     public static void main(String[] args) {
         System.out.println(removeDuplicates("abcabadfd"));
         System.out.println(validAnagram("avdfd", "vadddf"));

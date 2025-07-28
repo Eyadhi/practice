@@ -1,6 +1,6 @@
 package linkedlist;
 
-public class clist {
+public class Circular_List {
 	Node head, tail;
 
 	class Node {
@@ -118,7 +118,7 @@ public class clist {
 	}
 
 	public static void main(String[] args) {
-		clist l1 = new clist();
+		Circular_List l1 = new Circular_List();
 		l1.insertBeg(2);
 		l1.insertBeg(3);
 		l1.insertBeg(5);
