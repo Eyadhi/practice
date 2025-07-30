@@ -444,6 +444,20 @@ public class arrays {
 		}
 	}
 
+	public static int[] removeDuplicates(int[] arr) {
+		if (arr.length == 0)
+			return arr;
+
+		int slow = 0;
+		for (int fast = 1; fast < arr.length; fast++) {
+			if (arr[fast] != arr[slow]) {
+				arr[++slow] = arr[fast];
+
+			}
+		}
+		return arr;
+	}
+
 	public static void main(String[] args) {
 		/*
 		 * int nums[]= {1,4,3,2,5};
@@ -522,6 +536,11 @@ public class arrays {
 		// System.out.println("No two sum solution found.");
 		// }
 
+		int[] nums = { 1, 1, 2 };
+		int[] result = removeDuplicates(nums);
+		for (int i = 0; i < result.length; i++) {
+			System.out.print(result[i] + " ");
+		}
 		int[] lon = { 100, 4, 200, 1, 2 };
 		System.out.println(longestConsecutiveSequence(lon));
 	}
