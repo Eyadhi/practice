@@ -355,19 +355,16 @@ public class arrays {
 		for (int num : arr)
 			s1.add(num);
 
-		for (int num : arr) {
+		for (int num : s1) {
 			if (!s1.contains(num - 1)) {
-				int curr = num;
 				int currstreak = 1;
 
-				while (s1.contains(curr + 1)) {
-					curr++;
+				while (s1.contains(num + currstreak)) {
 					currstreak++;
 				}
 				res = Math.max(currstreak, res);
 			}
 		}
-
 		return res;
 	}
 
@@ -458,6 +455,44 @@ public class arrays {
 		return arr;
 	}
 
+	public static int search(int[] nums, int target) {
+		int left = 0;
+		int right = nums.length - 1;
+		while (left <= right) {
+			int mid = (left + right) / 2;
+			if (nums[mid] == target) {
+				return mid;
+			} else if (nums[mid] >= nums[left]) {
+				if (nums[left] <= target && target <= nums[mid]) {
+					right = mid - 1;
+				} else {
+					left = mid + 1;
+				}
+			} else {
+				if (nums[mid] <= target && target <= nums[right]) {
+					left = mid + 1;
+				} else {
+					right = mid - 1;
+				}
+			}
+		}
+		return -1;
+	}
+
+	public static int[] plusOne(int[] digits) {
+		int n = digits.length;
+		for (int i = n - 1; i >= 0; i--) {
+			if (digits[i] < 9) {
+				digits[i]++;
+				return digits;
+			}
+			digits[i] = 0;
+		}
+		digits = new int[n + 1];
+		digits[0] = 1;
+		return digits;
+	}
+
 	public static void main(String[] args) {
 		/*
 		 * int nums[]= {1,4,3,2,5};
@@ -536,12 +571,22 @@ public class arrays {
 		// System.out.println("No two sum solution found.");
 		// }
 
-		int[] nums = { 1, 1, 2 };
-		int[] result = removeDuplicates(nums);
+		// int[] nums = { 1, 1, 2 };
+		// int[] result = removeDuplicates(nums);
+		// for (int i = 0; i < result.length; i++) {
+		// System.out.print(result[i] + " ");
+		// }
+		// int[] lon = { 100, 4, 200, 1, 2 };
+		// System.out.println(longestConsecutiveSequence(lon));
+
+		// int[] nums1 = { 4, 5, 6, 7, 0, 1, 2 };
+		// int target = 0;
+		// System.out.println(search(nums1, target));
+
+		int[] digits = { 1, 2, 3 };
+		int[] result = plusOne(digits);
 		for (int i = 0; i < result.length; i++) {
 			System.out.print(result[i] + " ");
 		}
-		int[] lon = { 100, 4, 200, 1, 2 };
-		System.out.println(longestConsecutiveSequence(lon));
 	}
 }
