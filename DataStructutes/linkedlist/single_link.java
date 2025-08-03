@@ -1,6 +1,5 @@
 package linkedlist;
 
-import java.util.Stack;
 import java.util.*;
 
 public class single_link {
@@ -257,6 +256,52 @@ public class single_link {
 			mainptr = mainptr.next;
 		}
 		return mainptr.data;
+	}
+
+	public Node rotateRight(Node head, int k) {
+		if (head == null)
+			return head;
+
+		Node node = head;
+		int size = 1;
+		while (node.next != null) {
+			node = node.next;
+			size++;
+		}
+
+		k = k % size;
+		if (k == 0)
+			return head;
+
+		Node curr = head;
+		for (int i = 0; i < size - k - 1; i++) {
+			curr = curr.next;
+		}
+
+		Node newHead = curr.next;
+		curr.next = null;
+		node.next = head;
+
+		return newHead;
+	}
+
+	public Node removeNthFromEnd(Node head, int n) {
+		Node slow = head;
+		int count = 1;
+		while (slow.next != null) {
+			slow = slow.next;
+			count++;
+		}
+		slow = head;
+		if (n == count) {
+			return head.next;
+		}
+		int steps = count - n - 1;
+		while (steps-- > 0) {
+			slow = slow.next;
+		}
+		slow.next = slow.next.next;
+		return head;
 	}
 
 	public void Sort() {
