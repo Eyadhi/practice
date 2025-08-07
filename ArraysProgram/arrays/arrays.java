@@ -479,6 +479,95 @@ public class arrays {
 		return -1;
 	}
 
+	public static boolean isRotatedSorted(int[] nums) {
+		int n = nums.length;
+		int low = 0, high = n - 1;
+
+		if (nums[low] < nums[high])
+			return true;
+
+		while (low <= high) {
+			int mid = low + (high - low) / 2;
+
+			int prev = (mid - 1 + n) % n;
+			int next = (mid + 1) % n;
+
+			if (nums[mid] <= nums[prev] && nums[mid] <= nums[next]) {
+				for (int i = 0; i < n - 1; i++) {
+					int curr = (mid + i) % n;
+					int nextIdx = (curr + 1) % n;
+					if (nums[curr] > nums[nextIdx])
+						return false;
+				}
+				return true;
+			}
+
+			if (nums[mid] >= nums[low]) {
+				low = mid + 1;
+			} else {
+				high = mid - 1;
+			}
+		}
+
+		return false;
+	}
+
+	public int removeDuplicateMoreTwo(int[] nums) {
+		// int x = 0;
+		// Map<Integer,Integer> l1 =new HashMap<>();
+		// for(int i=0;i<nums.length;i++){
+		// l1.put(nums[i], l1.getOrDefault(nums[i], 0) + 1);
+		// if(l1.get(nums[i])<=2){
+		// nums[x++] = nums[i];
+		// }
+		// }
+		// return x;
+		int i = 2;
+		for (int j = 2; j < nums.length; j++) {
+			if (nums[j] != nums[i - 2]) {
+				nums[i] = nums[j];
+				i++;
+			}
+		}
+		return i;
+	}
+
+	public static int peakElement(int[] nums) {
+		return searchPeak(nums, 0, nums.length - 1);
+	}
+
+	public static int searchPeak(int[] nums, int left, int right) {
+		if (left <= right) {
+			int mid = (left + right) / 2;
+			boolean leftCheck = (mid == 0) || (nums[mid - 1] < nums[mid]);
+			boolean rightCheck = (mid == nums.length - 1) || (nums[mid + 1] < nums[mid]);
+
+			if (leftCheck && rightCheck) {
+				return mid;
+			}
+			if (mid > 0 && nums[mid - 1] > nums[mid]) {
+				return searchPeak(nums, left, mid - 1);
+			}
+			return searchPeak(nums, mid + 1, right);
+		}
+		return -1;
+	}
+
+	public static int findPeakElement(int[] nums) {
+		int low = 0;
+		int high = nums.length - 1;
+
+		while (low < high) {
+			int mid = low + (high - low) / 2;
+			if (nums[mid] < nums[mid + 1]) {
+				low = mid + 1;
+			} else {
+				high = mid;
+			}
+		}
+		return low;
+	}
+
 	public static int[] plusOne(int[] digits) {
 		int n = digits.length;
 		for (int i = n - 1; i >= 0; i--) {
@@ -583,10 +672,17 @@ public class arrays {
 		// int target = 0;
 		// System.out.println(search(nums1, target));
 
-		int[] digits = { 1, 2, 3 };
-		int[] result = plusOne(digits);
-		for (int i = 0; i < result.length; i++) {
-			System.out.print(result[i] + " ");
-		}
+		// int[] digits = { 1, 2, 3 };
+		// int[] result = plusOne(digits);
+		// for (int i = 0; i < result.length; i++) {
+		// System.out.print(result[i] + " ");
+		// }
+
+		// int[] arr1 = { 3, 4, 5, 1, 2 };
+		// System.out.println(isRotatedSorted(arr1));
+
+		int[] peak = { 1, 2, 1, 3, 5, 6, 4 };
+		System.out.println(findPeakElement(peak));
+
 	}
 }
