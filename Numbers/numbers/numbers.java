@@ -2,8 +2,6 @@ package numbers;
 
 import java.util.*;
 import java.math.BigInteger;
-import java.util.HashSet;
-import java.util.Set;
 
 public class numbers {
 	static String even_or_odd(int n) {
@@ -479,6 +477,26 @@ public class numbers {
 			return 1;
 		}
 		return SpecFibo(n - 1) * SpecFibo(n - 1) + SpecFibo(n - 2) * SpecFibo(n - 2);
+	}
+
+	public boolean isHappy(int n) {
+		int slow = n;
+		int fast = sum(n);
+		while (fast != 1 && slow != fast) {
+			slow = sum(slow);
+			fast = sum(sum(fast));
+		}
+		return fast == 1;
+	}
+
+	public int sum(int n) {
+		int sum = 0;
+		while (n != 0) {
+			int rem = n % 10;
+			sum += rem * rem;
+			n /= 10;
+		}
+		return sum;
 	}
 
 	public static String convertString(String str) {

@@ -46,13 +46,11 @@ public class Mergesort {
 	}
 
 	public static void main(String[] args) {
-		// int a2[] = new int[] { 2, 1, 4, 6, 1, 8, 1 };
-		// mergesorting(a2, 0, (a2.length) - 1);
-		// for (int i = 0; i < a2.length; i++) {
-		// System.out.print(a2[i] + " ");
-		// }
-
-		System.out.println(2 ^ 3);
+		int a2[] = new int[] { 2, 1, 4, 6, 1, 8, 1 };
+		mergesorting(a2, 0, (a2.length) - 1);
+		for (int i = 0; i < a2.length; i++) {
+			System.out.print(a2[i] + " ");
+		}
 
 	}
 
