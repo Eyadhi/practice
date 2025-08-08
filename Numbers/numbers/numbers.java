@@ -500,6 +500,7 @@ public class numbers {
 	}
 
 	public static String convertString(String str) {
+
 		StringBuilder str1 = new StringBuilder();
 		for (char ch : str.toCharArray()) {
 			switch (ch) {
