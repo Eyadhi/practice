@@ -13,6 +13,7 @@ public class NioExample {
 		ByteBuffer readBuffer = ByteBuffer.allocate(1024);
 		int result = readChannel.read(readBuffer);
 		System.out.println("file read successfully " + result);
+		fin.close();
 
 		FileOutputStream fout = new FileOutputStream("D:\\java\\desc1.txt");
 		FileChannel writeChannel = fout.getChannel();
@@ -22,6 +23,7 @@ public class NioExample {
 		writeBuffer.flip();
 		writeChannel.write(writeBuffer);
 		System.out.println("file written successfully");
+		fout.close();
 	}
 
 }

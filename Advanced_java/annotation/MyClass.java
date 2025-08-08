@@ -1,10 +1,7 @@
 package annotation;
 
-import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-import java.lang.reflect.Method;
 
 enum Tech {
 	java, python, c, cpp, html, css, js;
@@ -56,13 +53,6 @@ public class MyClass {
 	}
 
 	public static void main(String[] args) throws Exception {
-		// TODO Auto-generated method stub
-		/*
-		 * MyClass h=new MyClass();
-		 * Method My=h.getClass().getMethod("sayHello");
-		 * MyCustomAnnotation My1=My.getAnnotation(MyCustomAnnotation.class);
-		 * System.out.println("value:"+My1.Value());
-		 */
 		Demo1 d = new Demo1();
 		Fullstack1 a = d.getClass().getAnnotation(Fullstack1.class);
 		System.out.println(a);

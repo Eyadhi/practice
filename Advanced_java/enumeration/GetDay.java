@@ -29,7 +29,6 @@ public class GetDay {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		/*
 		 * Days c1=Days.SUNDAY;
 		 * System.out.println("Red Enum name:"+c1.name());

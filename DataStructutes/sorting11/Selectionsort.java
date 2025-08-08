@@ -1,7 +1,6 @@
 package sorting11;
 
 class Selectionsort {
-	// Main method, responsible for the execution of the code
 	public static void main(String args[]) {
 		int arr[] = { 72, 50, 10, 44, 20 };
 		selectionSort(arr);
@@ -22,7 +21,6 @@ class Selectionsort {
 		}
 	}
 
-	// Prints the sorted array
 	static void printArray(int a[]) {
 		int len = a.length;
 		for (int i = 0; i < len; ++i)

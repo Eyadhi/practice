@@ -1,6 +1,5 @@
 package linkedlist;
 
-import java.util.Stack;
 import java.util.*;
 
 public class single_link {
@@ -259,6 +258,52 @@ public class single_link {
 		return mainptr.data;
 	}
 
+	public Node rotateRight(Node head, int k) {
+		if (head == null)
+			return head;
+
+		Node node = head;
+		int size = 1;
+		while (node.next != null) {
+			node = node.next;
+			size++;
+		}
+
+		k = k % size;
+		if (k == 0)
+			return head;
+
+		Node curr = head;
+		for (int i = 0; i < size - k - 1; i++) {
+			curr = curr.next;
+		}
+
+		Node newHead = curr.next;
+		curr.next = null;
+		node.next = head;
+
+		return newHead;
+	}
+
+	public Node removeNthFromEnd(Node head, int n) {
+		Node slow = head;
+		int count = 1;
+		while (slow.next != null) {
+			slow = slow.next;
+			count++;
+		}
+		slow = head;
+		if (n == count) {
+			return head.next;
+		}
+		int steps = count - n - 1;
+		while (steps-- > 0) {
+			slow = slow.next;
+		}
+		slow.next = slow.next.next;
+		return head;
+	}
+
 	public void Sort() {
 		Node temp = head;
 		int d;
@@ -334,9 +379,6 @@ public class single_link {
 		headRef = sortedMerge(a, b);
 	}
 
-	// Split the nodes of the given list into front and back halves and return the
-	// two lists using the reference parameters
-	// If the length is odd, the extra node should go in the front list
 	static void frontBackSplit(Node source, Node[] frontRef, Node[] backRef) {
 		Node slow = source;
 		Node fast = source.next;
@@ -550,7 +592,6 @@ public class single_link {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		single_link obj = new single_link();
 		obj.insertBeg(15);
 		obj.insertBeg(20);

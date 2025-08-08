@@ -87,7 +87,6 @@ public class search {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		int matrix[][] = { { 10, 20, 30, 40 },
 				{ 15, 25, 35, 45 },
 				{ 17, 27, 37, 47 },

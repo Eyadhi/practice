@@ -35,7 +35,6 @@ public class Date_Sorting {
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		String[] dates = { "24 Jul 2017", "25 Jul 2017", "11 Jan 1996" };
 		int n = dates.length;
 		sortMonths();
