@@ -499,6 +499,23 @@ public class numbers {
 		return sum;
 	}
 
+	public static boolean isSquare(int n) {
+		for (int i = 2; i * i <= n; i++) {
+			if (n % i == 0) {
+				int count = 0;
+				while (n % i == 0) {
+					count++;
+					n /= i;
+				}
+
+				if (i % 4 == 3 && count % 2 != 0) {
+					return false;
+				}
+			}
+		}
+		return n % 4 != 3;
+	}
+
 	public static String convertString(String str) {
 
 		StringBuilder str1 = new StringBuilder();
@@ -596,14 +613,16 @@ public class numbers {
 		 */
 		// System.out.println(Armstrong1(8209));
 		// System.out.println(sumOfPrime(43));
-		Scanner sc = new Scanner(System.in);
-		System.out.println("enter s1");
-		String s1 = sc.next();
-		System.out.println("enter s2");
-		String s2 = sc.next();
-		System.out.println("enter index");
-		int index = sc.nextInt();
-		System.out.println(func(index, s1, s2));
-		sc.close();
+		// Scanner sc = new Scanner(System.in);
+		// System.out.println("enter s1");
+		// String s1 = sc.next();
+		// System.out.println("enter s2");
+		// String s2 = sc.next();
+		// System.out.println("enter index");
+		// int index = sc.nextInt();
+		// System.out.println(func(index, s1, s2));
+		// sc.close();
+
+		System.out.println(isSquare(3));
 	}
 }
