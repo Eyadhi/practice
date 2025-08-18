@@ -3,6 +3,7 @@ package stringprograms;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -149,6 +150,22 @@ public class StringProgram {
         return maxStr;
     }
 
+    public static int lengthOfLongestSubstring(String s) {
+        int n = s.length();
+        int left = 0, maxLen = 0;
+        Set<Character> set = new HashSet<>();
+
+        for (int right = 0; right < n; right++) {
+            while (set.contains(s.charAt(right))) {
+                set.remove(s.charAt(left));
+                left++;
+            }
+            set.add(s.charAt(right));
+            maxLen = Math.max(maxLen, right - left + 1);
+        }
+        return maxLen;
+    }
+
     public static String result(String[] arr, String str) {
         String res = "";
         int len = str.length();
@@ -190,6 +207,9 @@ public class StringProgram {
 
         String input1 = "abacdfgdcaba";
         System.out.println("Longest Palindromic Substring: " + longestPalindromeSubstring(input1));
+
+        String s = "abcabcbb";
+        System.out.println(lengthOfLongestSubstring(s));
 
         String[] arr1 = { "bandbk", "bakaba", "aanaba", "apple" };
         String target = "banana";
