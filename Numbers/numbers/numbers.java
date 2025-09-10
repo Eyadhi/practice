@@ -4,11 +4,11 @@ import java.util.*;
 import java.math.BigInteger;
 
 public class numbers {
-	static String even_or_odd(int n) {
+	static boolean even_or_odd(int n) {
 		if (n % 2 == 0) {
-			return new String("even");
+			return true;
 		}
-		return new String("odd");
+		return false;
 	}
 
 	static int isPrime(int n) {
@@ -138,7 +138,7 @@ public class numbers {
 		return res;
 	}
 
-	static String Harshad_number(int n) {
+	static boolean Harshad_number(int n) {
 		// An integer number in base 10 which is divisible by the sum of its digits is
 		// said to be a Harshad Number. An n-Harshad number is an integer number
 		// divisible by the sum of its digit in base n.
@@ -152,12 +152,12 @@ public class numbers {
 			n = n / 10;
 		}
 		if (n1 % sum == 0) {
-			return new String("Harshad Number");
+			return true;
 		}
-		return new String("Not a Harshad Number");
+		return false;
 	}
 
-	static String Automorphic_number(int n) {
+	static boolean Automorphic_number(int n) {
 		// An automorphic number is a number whose square ends in the same digits as the
 		// number itself. A number n is called automorphic if:
 		// n2 (mod 10d) = n where d is the number of digits in n.
@@ -166,15 +166,15 @@ public class numbers {
 		int square = n * n;
 		while (n != 0) {
 			if (n % 10 != square % 10) {
-				return new String("Not automorphic");
+				return true;
 			}
 			n /= 10;
 			square /= 10;
 		}
-		return new String("Automorphic");
+		return false;
 	}
 
-	static String Perfect_number(int n) {
+	static boolean Perfect_number(int n) {
 		// A Number that can be represented as the sum of it's factors except the number
 		// itself is known as the Perfect Number.
 		// Example
@@ -189,12 +189,12 @@ public class numbers {
 			}
 		}
 		if (n1 == sum) {
-			return new String("Perfect Number");
+			return true;
 		}
-		return new String("Not a Perfect Number");
+		return false;
 	}
 
-	static String Strong_number(int n) {
+	static boolean Strong_number(int n) {
 		// Strong Numbers are the numbers whose sum of factorial of digits is equal to
 		// the original number. Given a number, check if it is a Strong Number or not.
 		// Examples:
@@ -208,12 +208,12 @@ public class numbers {
 			n = n / 10;
 		}
 		if (n1 == sum) {
-			return new String("Strong Number");
+			return true;
 		}
-		return new String("Not a Strong Number");
+		return false;
 	}
 
-	static String Abundant_number(int n) {
+	static boolean Abundant_number(int n) {
 		// A number n is said to be an Abundant Number if the sum of all the proper
 		// divisors of the number denoted by sum(n) is greater than the value of the
 		// number n. And the difference between these two values is called abundance.
@@ -234,9 +234,9 @@ public class numbers {
 			n = n / 10;
 		}
 		if (n1 < sum) {
-			return new String("Abundant Number");
+			return true;
 		}
-		return new String("Not a Abundant Number");
+		return false;
 	}
 
 	static boolean Palindrome(int n) {
@@ -349,7 +349,7 @@ public class numbers {
 		return res;
 	}
 
-	static String Armstrong1(int n) {
+	static boolean Armstrong1(int n) {
 		// A positive integer of n digits is called an Armstrong number of order n
 		// (order is the number of digits) if
 		// abcd… = pow(a,n) + pow(b,n) + pow(c,n) + pow(d,n) + ….
@@ -371,9 +371,9 @@ public class numbers {
 			n = n / 10;
 		}
 		if (n1 == sum) {
-			return new String("Armstrong");
+			return true;
 		}
-		return new String("Not Armstrong");
+		return false;
 	}
 
 	static int autobiographical(int n) {
@@ -566,6 +566,23 @@ public class numbers {
 			res += str.charAt(i);
 		}
 		return res;
+	}
+
+	public boolean isUgly(int n) {
+		// An ugly number is a positive integer which does not have a prime factor other
+		// than 2, 3, and 5.
+		// Given an integer n, return true if n is an ugly number.
+		if (n <= 0)
+			return false; // ugly numbers must be positive
+
+		while (n % 2 == 0)
+			n /= 2;
+		while (n % 3 == 0)
+			n /= 3;
+		while (n % 5 == 0)
+			n /= 5;
+
+		return n == 1;
 	}
 
 	public static void main(String[] args) {
